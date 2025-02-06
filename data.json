@@ -1,0 +1,13 @@
+import pandas as pd
+
+
+from flask import Flask,request , jsonify
+app = Flask(__name__)
+@app.route('/data', methods ={'GET'})
+def data():
+    df = pd.read_csv('https://raw.githubusercontent.com/LearnDataSci/articles/refs/heads/master/Python%20Pandas%20Tutorial%20A%20Complete%20Introduction%20for%20Beginners/IMDB-Movie-Data.csv')
+    data=df.to_json()
+    return jsonify(data)
+    
+if __name__ == '__main__':
+    app.run()
